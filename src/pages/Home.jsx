@@ -12,11 +12,11 @@ import { CommentsBlock } from "../components/CommentsBlock";
 
 export const Home = () => {
     const dispatch = useDispatch();
-    const { posts, tags } = useSelector((state) => state.posts);
+    const { posts } = useSelector((state) => state.posts);
 
     useEffect(() => {
         dispatch(fetchPosts());
-    }, []);
+    }, [dispatch]);
 
     const isPostLoading = posts.status === "loading";
 
