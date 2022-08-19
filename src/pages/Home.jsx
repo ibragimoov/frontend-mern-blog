@@ -53,7 +53,7 @@ export const Home = () => {
                                     createdAt={obj.createdAt}
                                     viewsCount={obj.veiwsCount}
                                     commentsCount={3}
-                                    tags={["react", "fun", "typescript"]}
+                                    tags={obj.tags}
                                     isEditable={data?._id === obj.user._id}
                                 />
                             )
