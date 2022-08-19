@@ -12,6 +12,7 @@ import { CommentsBlock } from "../components/CommentsBlock";
 
 export const Home = () => {
     const dispatch = useDispatch();
+    const { data } = useSelector((state) => state.auth.data);
     const { posts, tags } = useSelector((state) => state.posts);
 
     useEffect(() => {
@@ -49,7 +50,7 @@ export const Home = () => {
                                     viewsCount={obj.veiwsCount}
                                     commentsCount={3}
                                     tags={["react", "fun", "typescript"]}
-                                    isEditable
+                                    isEditable={data?._id === obj._id}
                                 />
                             )
                     )}
