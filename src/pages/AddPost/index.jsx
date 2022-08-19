@@ -36,7 +36,9 @@ export const AddPost = () => {
         }
     };
 
-    const onClickRemoveImage = () => {};
+    const onClickRemoveImage = () => {
+        setImageUrl("");
+    };
 
     const onChange = React.useCallback((value) => {
         setValue(value);
