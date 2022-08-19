@@ -1,6 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { useNavigate, Navigate } from "react-router-dom";
 
 import axios from "../../axios";
 
@@ -17,7 +17,9 @@ import { useRef } from "react";
 
 export const AddPost = () => {
     const isAuth = useSelector(selectIsAuth);
+    const navigate = useNavigate();
 
+    const [isLoading, setIsLoading] = React.useState(false);
     const [value, setValue] = React.useState("");
     const [title, setTitle] = React.useState("");
     const [tags, setTags] = React.useState("");
@@ -43,6 +45,29 @@ export const AddPost = () => {
     const onChange = React.useCallback((value) => {
         setValue(value);
     }, []);
+
+    const onSubmit = async () => {
+        try {
+            setIsLoading(true);
+            const tagsArray = tags.split(",");
+
+            const fields = {
+                title,
+                text: value,
+                imageUrl,
+                tags: tagsArray,
+            };
+
+            const { data } = await axios.post("/posts", fields);
+
+            const id = data._id;
+
+            navigate(`/posts/${id}`);
+        } catch (error) {
+            console.log(error);
+            alert("Ошибка при создании статьи");
+        }
+    };
 
     const options = React.useMemo(
         () => ({
@@ -119,7 +144,7 @@ export const AddPost = () => {
                 options={options}
             />
             <div className={styles.buttons}>
-                <Button size="large" variant="contained">
+                <Button onClick={onSubmit} size="large" variant="contained">
                     Опубликовать
                 </Button>
                 <a href="/">

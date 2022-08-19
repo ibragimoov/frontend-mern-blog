@@ -44,13 +44,17 @@ export const Home = () => {
                                     key={obj._id}
                                     id={obj._id}
                                     title={obj.title}
-                                    imageUrl={obj.imageUrl}
+                                    imageUrl={
+                                        obj.imageUrl
+                                            ? `http://localhost:5000${obj.imageUrl}`
+                                            : ""
+                                    }
                                     user={obj.user}
                                     createdAt={obj.createdAt}
                                     viewsCount={obj.veiwsCount}
                                     commentsCount={3}
                                     tags={["react", "fun", "typescript"]}
-                                    isEditable={data?._id === obj._id}
+                                    isEditable={data?._id === obj.user._id}
                                 />
                             )
                     )}

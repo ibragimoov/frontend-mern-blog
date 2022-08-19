@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
+import ReactMarkdown from "react-markdown";
 
 import { Post } from "../components/Post";
 import { Index } from "../components/AddComment";
@@ -28,12 +29,14 @@ export const FullPost = () => {
         return <Post isLoading={isLoading} isFullPost />;
     }
 
+    console.log(data.imageUrl);
+
     return (
         <>
             <Post
                 id={data._id}
                 title={data.title}
-                imageUrl={data.imageUrl}
+                imageUrl={`http://localhost:5000${data.imageUrl}`}
                 user={data.user}
                 createdAt={data.createdAt}
                 viewsCount={data.veiwsCount}
@@ -41,7 +44,7 @@ export const FullPost = () => {
                 tags={data.tags}
                 isFullPost
             >
-                <p>{data.text}</p>
+                <ReactMarkdown children={data.text} />
             </Post>
             <CommentsBlock
                 items={[
