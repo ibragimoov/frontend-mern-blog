@@ -12,7 +12,7 @@ import { CommentsBlock } from "../components/CommentsBlock";
 
 export const Home = () => {
     const dispatch = useDispatch();
-    const { data } = useSelector((state) => state.auth.data);
+    const { data } = useSelector((state) => state.auth);
     const { posts, tags } = useSelector((state) => state.posts);
 
     useEffect(() => {
