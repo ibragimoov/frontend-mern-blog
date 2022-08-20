@@ -52,13 +52,12 @@ export const AddPost = () => {
     const onSubmit = async () => {
         try {
             setIsLoading(true);
-            const tagsArray = tags?.split(",");
 
             const fields = {
                 title,
                 text: value,
                 imageUrl,
-                tags: tagsArray,
+                tags,
             };
 
             const { data } = isEditing
