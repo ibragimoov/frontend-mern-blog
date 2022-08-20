@@ -16,8 +16,6 @@ function App() {
         dispatch(fetchAuthMe());
     }, []);
 
-    console.log(isAuth);
-
     return (
         <>
             <Header />

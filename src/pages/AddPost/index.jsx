@@ -52,7 +52,7 @@ export const AddPost = () => {
     const onSubmit = async () => {
         try {
             setIsLoading(true);
-            const tagsArray = tags.split(",");
+            const tagsArray = tags?.split(",");
 
             const fields = {
                 title,
