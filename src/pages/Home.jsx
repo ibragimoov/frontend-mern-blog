@@ -35,28 +35,30 @@ export const Home = () => {
             </Tabs>
             <Grid container spacing={4}>
                 <Grid xs={8} item>
-                    {(isPostLoading ? [...Array(5)] : posts.items).map(
-                        (obj, index) =>
-                            isPostLoading ? (
-                                <Post key={index} isLoading={true} />
-                            ) : (
-                                <Post
-                                    key={obj._id}
-                                    id={obj._id}
-                                    title={obj.title}
-                                    imageUrl={
-                                        obj.imageUrl
-                                            ? `${process.env.REACT_APP_API_URL}${obj.imageUrl}`
-                                            : ""
-                                    }
-                                    user={obj.user}
-                                    createdAt={obj.createdAt}
-                                    viewsCount={obj.veiwsCount}
-                                    commentsCount={3}
-                                    tags={obj.tags}
-                                    isEditable={data?._id === obj.user._id}
-                                />
-                            )
+                    {(isPostLoading
+                        ? [...Array(5)]
+                        : posts.items.reverse()
+                    ).map((obj, index) =>
+                        isPostLoading ? (
+                            <Post key={index} isLoading={true} />
+                        ) : (
+                            <Post
+                                key={obj._id}
+                                id={obj._id}
+                                title={obj.title}
+                                imageUrl={
+                                    obj.imageUrl
+                                        ? `${process.env.REACT_APP_API_URL}${obj.imageUrl}`
+                                        : ""
+                                }
+                                user={obj.user}
+                                createdAt={obj.createdAt}
+                                viewsCount={obj.veiwsCount}
+                                commentsCount={3}
+                                tags={obj.tags}
+                                isEditable={data?._id === obj.user._id}
+                            />
+                        )
                     )}
                 </Grid>
                 <Grid xs={4} item>

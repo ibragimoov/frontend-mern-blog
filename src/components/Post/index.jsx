@@ -62,7 +62,7 @@ export const Post = ({
                 />
             )}
             <div className={styles.wrapper}>
-                <UserInfo {...user} additionalText={createdAt} />
+                <UserInfo fullName={user.fullName} additionalText={createdAt} />
                 <div className={styles.indention}>
                     <h2
                         className={clsx(styles.title, {
